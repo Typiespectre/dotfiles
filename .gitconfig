@@ -1,0 +1,6 @@
+[user]
+	name = Choi GyeongGeon
+	email = ckgun@naver.com
+[core]
+	precomposeunicode = true
+	quotepath = false

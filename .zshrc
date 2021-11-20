@@ -109,6 +109,7 @@ alias brew='arch -arm64 /opt/homebrew/bin/brew'
 alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z`'
 alias mv="mv -i"
 alias df="df -h"
+alias info="neofetch"
 
 fpath+=/Users/ckgun/.zsh/pure
 autoload -U promptinit; promptinit
@@ -118,3 +119,6 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bindkey -v
+
+# FIGlet with lolcat
+figlet -w 80 -f cybermedium -l Hello, Typiespectre. | lolcat

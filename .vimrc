@@ -1,4 +1,3 @@
-
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -52,6 +51,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
+
+
 " ***  python vim setting ***
 " *** and it is my old vim setting! ***
 " if has ("syntax")
@@ -68,6 +69,8 @@ set sw=4
 " set smartcase
 " set smarttab
 set fileencodings=utf-8,euc-kr
+
+
 
 " Comments in Vimscript start with a `"`.
 
@@ -134,21 +137,23 @@ set noerrorbells visualbell t_vb=
 " sometimes be convenient.
 set mouse+=a
 
-" Try to prevent bad habits like using the arrow keys for movement. This is
-" not the only possible bad habit. For example, holding down the h/j/k/l keys
-" for movement, rather than using more efficient movement commands, is also a
-" bad habit. The former is enforceable through a .vimrc, while we don't know
-" how to prevent the latter.
-" Do this in normal mode...
-nnoremap <Left>  :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up>    :echoe "Use k"<CR>
-nnoremap <Down>  :echoe "Use j"<CR>
-" ...and in insert mode
-inoremap <Left>  <ESC>:echoe "Use h"<CR>
-inoremap <Right> <ESC>:echoe "Use l"<CR>
-inoremap <Up>    <ESC>:echoe "Use k"<CR>
-inoremap <Down>  <ESC>:echoe "Use j"<CR>
+"" Try to prevent bad habits like using the arrow keys for movement. This is
+"" not the only possible bad habit. For example, holding down the h/j/k/l keys
+"" for movement, rather than using more efficient movement commands, is also a
+"" bad habit. The former is enforceable through a .vimrc, while we don't know
+"" how to prevent the latter.
+"" Do this in normal mode...
+"nnoremap <Left>  :echoe 'Use h'<CR>
+"nnoremap <Right> :echoe 'Use l'<CR>
+"nnoremap <Up>    :echoe 'Use k'<CR>
+"nnoremap <Down>  :echoe 'Use j'<CR>
+"" ...and in insert mode
+"inoremap <Left>  <ESC>:echoe 'Use h'<CR>
+"inoremap <Right> <ESC>:echoe 'Use l'<CR>
+"inoremap <Up>    <ESC>:echoe 'Use k'<CR>
+"inoremap <down>  <esc>:echoe 'use j'<cr>
+
+
 
 " CtrlP settings
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -170,3 +175,68 @@ endif
 
 set clipboard=unnamed
 set noimd
+
+set linespace=3
+set encoding=utf-8
+set fileencoding=utf-8
+set guifont=D2Coding:h12:cHANGEUL:qDEFAULT
+set guifont=D2Coding:h12:cANSI:qDEFAULT
+set guifontwide=D2Coding:h14
+
+
+
+"https://myeongjae.kim/blog/2016/10/06/vimlinux-4-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%A4%EB%8B%88%EC%A0%80%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-vim-airline-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
+
+" Key Setting - resize windows
+nnoremap <silent> <Leader>= :exe "resize +3"<CR>
+nnoremap <silent> <Leader>- :exe "resize -3"<CR>
+nnoremap <silent> <Leader>] :exe "vertical resize +8"<CR>
+nnoremap <silent> <Leader>[ :exe "vertical resize -8"<CR>
+
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>} :exe "vertical resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>{ :exe "vertical resize " . (winheight(0) * 2/3)<CR>
+
+" Color Setting
+set termguicolors
+
+" Vundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+
+" vim-airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo at http://vim-scripts.org/vim/scripts.html; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+" for vim-airline
+let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
+let g:airline_theme='hybrid'
+set laststatus=2 " turn on bottom bar
+

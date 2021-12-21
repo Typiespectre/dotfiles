@@ -37,9 +37,9 @@ endif
 augroup vimrcEx
   au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-augroup END
+" For all text files set 'textwidth' to 78 characters.
+" autocmd FileType text setlocal textwidth=78
+" augroup END
 
 " Add optional packages.
 "
@@ -53,22 +53,41 @@ endif
 
 
 
-" ***  python vim setting ***
-" *** and it is my old vim setting! ***
+" ***  python vim setting and my old vim setting! ***
 " if has ("syntax")
 "     syntax on
 " endif
 filetype indent plugin on
 " set hlsearch
 " set nu
+" set autoindent
+" set smartindent
 set ts=4
 set expandtab
 set sw=4
-" set autoindent
-" set smartindent
 " set smartcase
 " set smarttab
 set fileencodings=utf-8,euc-kr
+
+
+
+" Other Program Settings
+set title " 타이틀바에 현재 편집중인 파일 표시
+set showcmd " 부분적인 명령어 상태라인에 표시
+set ruler " 상태표시줄에 커서 위치 보여줌
+set vb " 비주얼벨 사용
+set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
+set wrap
+set linebreak
+set paste " 붙여넣기 설정
+set nobackup " 백업파일 삭제
+" Markdown 문법 설정 (Git 에서 사용)
+augroup markdown
+    " remove previous autocmds
+    autocmd!
+    " set every new or read *.md buffer to use the markdown filetype
+    autocmd BufRead,BufNew *.md setf markdown
+augroup END
 
 
 
@@ -187,17 +206,6 @@ set guifontwide=D2Coding:h14
 
 "https://myeongjae.kim/blog/2016/10/06/vimlinux-4-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%A4%EB%8B%88%EC%A0%80%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-vim-airline-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
 
-" Key Setting - resize windows
-nnoremap <silent> <Leader>= :exe "resize +3"<CR>
-nnoremap <silent> <Leader>- :exe "resize -3"<CR>
-nnoremap <silent> <Leader>] :exe "vertical resize +8"<CR>
-nnoremap <silent> <Leader>[ :exe "vertical resize -8"<CR>
-
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
-nnoremap <silent> <Leader>} :exe "vertical resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>{ :exe "vertical resize " . (winheight(0) * 2/3)<CR>
-
 " Color Setting
 set termguicolors
 
@@ -220,6 +228,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
+" vim-syntastic
+Plugin 'scrooloose/syntastic'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -239,4 +250,4 @@ filetype plugin indent on    " required
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
-
+set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\

@@ -88,6 +88,8 @@ augroup markdown
     " set every new or read *.md buffer to use the markdown filetype
     autocmd BufRead,BufNew *.md setf markdown
 augroup END
+" 하이라이트 끄기
+nnoremap <esc><esc> :noh<return>
 
 
 

@@ -121,4 +121,4 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey -v
 
 # FIGlet with lolcat
-figlet -w 80 -f cybermedium -l Hello, Typiespectre. | lolcat
+figlet -w 80 -f slant -l Typiespectre. | lolcat

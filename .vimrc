@@ -96,18 +96,18 @@ noremap <Leader>Y "+y
 noremap <Leader>P "+p
 " cursor last word
 set ve+=onemore
-noremap $ $l
-
-" Triger `autoread` when files changes on disk
-" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-
-" Notification after file change
-" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-autocmd FileChangedShellPost *
-  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+"noremap $ $l
+"
+"" Triger `autoread` when files changes on disk
+"" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+"" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+"    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+"            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+"
+"" Notification after file change
+"" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+"autocmd FileChangedShellPost *
+"  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 set clipboard=unnamed
 set noimd
@@ -195,7 +195,7 @@ set mouse+=a
 "" for movement, rather than using more efficient movement commands, is also a
 "" bad habit. The former is enforceable through a .vimrc, while we don't know
 "" how to prevent the latter.
-"" Do this in normal mode...
+" Do this in normal mode...
 "nnoremap <Left>  :echoe 'Use h'<CR>
 "nnoremap <Right> :echoe 'Use l'<CR>
 "nnoremap <Up>    :echoe 'Use k'<CR>

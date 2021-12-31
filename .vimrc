@@ -70,7 +70,6 @@ set sw=4
 set fileencodings=utf-8,euc-kr
 
 
-
 " Other Program Settings
 set title " 타이틀바에 현재 편집중인 파일 표시
 set showcmd " 부분적인 명령어 상태라인에 표시
@@ -79,7 +78,7 @@ set vb " 비주얼벨 사용
 set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
 set wrap
 set linebreak
-set paste " 붙여넣기 설정
+" set paste " 붙여넣기 설정
 set nobackup " 백업파일 삭제
 " Markdown 문법 설정 (Git 에서 사용)
 augroup markdown
@@ -90,6 +89,39 @@ augroup markdown
 augroup END
 " 하이라이트 끄기
 nnoremap <esc><esc> :noh<return>
+" system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+" cursor last word
+set ve+=onemore
+noremap $ $l
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+set clipboard=unnamed
+set noimd
+
+set linespace=3
+set encoding=utf-8
+set fileencoding=utf-8
+set guifont=D2Coding:h12:cHANGEUL:qDEFAULT
+set guifont=D2Coding:h12:cANSI:qDEFAULT
+set guifontwide=D2Coding:h14
+
+" buffer movement
+nnoremap <C-h> :bprevious!<Enter>
+nnoremap <C-l> :bnext!<Enter>
 
 
 
@@ -194,16 +226,6 @@ if has ('persistent_undo')
     set undofile
 endif
 
-set clipboard=unnamed
-set noimd
-
-set linespace=3
-set encoding=utf-8
-set fileencoding=utf-8
-set guifont=D2Coding:h12:cHANGEUL:qDEFAULT
-set guifont=D2Coding:h12:cANSI:qDEFAULT
-set guifontwide=D2Coding:h14
-
 
 
 "https://myeongjae.kim/blog/2016/10/06/vimlinux-4-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%A4%EB%8B%88%EC%A0%80%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-vim-airline-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
@@ -250,6 +272,9 @@ filetype plugin indent on    " required
 
 " for vim-airline
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
+let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
+" let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
+" let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\

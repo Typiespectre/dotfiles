@@ -75,7 +75,7 @@ set title " 타이틀바에 현재 편집중인 파일 표시
 set showcmd " 부분적인 명령어 상태라인에 표시
 set ruler " 상태표시줄에 커서 위치 보여줌
 set vb " 비주얼벨 사용
-set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
+" set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
 set wrap
 set linebreak
 set paste " 붙여넣기 설정
@@ -112,12 +112,22 @@ set guifont=D2Coding:h12:cANSI:qDEFAULT
 set guifontwide=D2Coding:h14
 
 " buffer movement
-nnoremap <C-h> :bprevious!<Enter>
-nnoremap <C-l> :bnext!<Enter>
+"nnoremap <silent> <C-h> :bprevious!<Enter>
+"nnoremap <silent> <C-l> :bnext!<Enter>
 
 " autoread
 set autoread
 au CursorHold * checktime
+
+" split buffers
+" set splitbelow
+set splitright
+
+" buffer size
+nmap <silent> <C-k> :resize +5<CR>
+nmap <silent> <C-j> :resize -5<CR>
+nmap <silent> <C-h> :vertical resize -5<CR>
+nmap <silent> <C-l> :vertical resize +5<CR>
 
 
 
@@ -267,10 +277,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " for vim-airline
-let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
+let g:airline#extensions#tabline#enabled = 1 			  " turn on buffer list
 let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
-" let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
-" let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
+let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
+let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\

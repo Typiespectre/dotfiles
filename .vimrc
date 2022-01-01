@@ -78,8 +78,9 @@ set vb " 비주얼벨 사용
 set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
 set wrap
 set linebreak
-" set paste " 붙여넣기 설정
+set paste " 붙여넣기 설정
 set nobackup " 백업파일 삭제
+
 " Markdown 문법 설정 (Git 에서 사용)
 augroup markdown
     " remove previous autocmds
@@ -87,31 +88,22 @@ augroup markdown
     " set every new or read *.md buffer to use the markdown filetype
     autocmd BufRead,BufNew *.md setf markdown
 augroup END
+
 " 하이라이트 끄기
 nnoremap <esc><esc> :noh<return>
+
 " system clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
 " cursor last word
 set ve+=onemore
-"noremap $ $l
-"
-"" Triger `autoread` when files changes on disk
-"" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-"" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-"    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
-"            \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-"
-"" Notification after file change
-"" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-"autocmd FileChangedShellPost *
-"  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+noremap $ $l
 
 set clipboard=unnamed
 set noimd
-
 set linespace=3
 set encoding=utf-8
 set fileencoding=utf-8
@@ -122,6 +114,10 @@ set guifontwide=D2Coding:h14
 " buffer movement
 nnoremap <C-h> :bprevious!<Enter>
 nnoremap <C-l> :bnext!<Enter>
+
+" autoread
+set autoread
+au CursorHold * checktime
 
 
 

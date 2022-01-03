@@ -110,6 +110,7 @@ alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z`'
 alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
+alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
 fpath+=/Users/ckgun/.zsh/pure
 autoload -U promptinit; promptinit

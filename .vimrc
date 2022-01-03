@@ -60,13 +60,14 @@ endif
 filetype indent plugin on
 " set hlsearch
 " set nu
-" set autoindent
-" set smartindent
 set ts=4
 set expandtab
 set sw=4
+set autoindent
+" set smartindent
 " set smartcase
-" set smarttab
+set cindent
+set smarttab
 set fileencodings=utf-8,euc-kr
 
 
@@ -78,7 +79,7 @@ set vb " 비주얼벨 사용
 " set km=startsel,stopsel " SHIFT로 선택 영역 만들기 허용
 set wrap
 set linebreak
-set paste " 붙여넣기 설정
+" set paste " 붙여넣기 설정
 set nobackup " 백업파일 삭제
 
 " Markdown 문법 설정 (Git 에서 사용)
@@ -129,6 +130,8 @@ nmap <silent> <C-j> :resize -5<CR>
 nmap <silent> <C-h> :vertical resize -5<CR>
 nmap <silent> <C-l> :vertical resize +5<CR>
 
+" disable spell check
+au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  * set nospell
 
 
 " Comments in Vimscript start with a `"`.

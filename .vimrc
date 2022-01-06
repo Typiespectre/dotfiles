@@ -130,8 +130,26 @@ nmap <silent> <C-j> :resize -5<CR>
 nmap <silent> <C-h> :vertical resize -5<CR>
 nmap <silent> <C-l> :vertical resize +5<CR>
 
-" disable spell check
-au BufNewFile,BufReadPost,FilterReadPost,FileReadPost  * set nospell
+" vim-multiple-cursor
+let g:multi_cursor_use_default_mapping=0
+
+" vim-multiple-cursor Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-m>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" smooth mouse scroll
+map <ScrollWheelUp> <C-Y>
+map <ScrollWheelDown> <C-E>
+
+" vim-smooth-scroll
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
+
+" no yank while delete
+nnoremap D "_dd
+
 
 
 " Comments in Vimscript start with a `"`.
@@ -263,6 +281,12 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " vim-syntastic
 Plugin 'scrooloose/syntastic'
+
+" vim-multiple-cursor
+Plugin 'terryma/vim-multiple-cursors'
+
+" vim-smooth-scroll
+Plugin 'terryma/vim-smooth-scroll'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -110,7 +110,7 @@ alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z`'
 alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
-alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
+# alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
 fpath+=/Users/ckgun/.zsh/pure
 autoload -U promptinit; promptinit
@@ -119,7 +119,7 @@ prompt pure
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-bindkey -v
+bindkey -e
 
 # FIGlet with lolcat
 figlet -w 80 -f slant -l Typiespectre. | lolcat

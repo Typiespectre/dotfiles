@@ -148,7 +148,25 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
 " no yank while delete
-nnoremap D "_dd
+xnoremap D "_dd
+
+"Cursor settings:
+
+"  1 -> blinking block
+"  2 -> solid block 
+"  3 -> blinking underscore
+"  4 -> solid underscore
+"  5 -> blinking vertical bar
+"  6 -> solid vertical bar
+
+" cursor initial setting
+autocmd VimLeave * let &t_me="\<Esc>]50;CursorShape=1\x7"
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[5 q" "EI = NORMAL mode (ELSE)
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
 
 
 
@@ -287,6 +305,13 @@ Plugin 'terryma/vim-multiple-cursors'
 
 " vim-smooth-scroll
 Plugin 'terryma/vim-smooth-scroll'
+
+" vim-current-word
+Plugin 'dominikduda/vim_current_word'
+
+" vim colorscheme: gouvbox
+Plugin 'morhetz/gruvbox'
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

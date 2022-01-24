@@ -112,6 +112,13 @@ alias df="df -h"
 alias info="neofetch"
 # alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
+# blinking vertial cursor
+# echo '\e[5 q'
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+precmd_functions+=(_fix_cursor)
+
 fpath+=/Users/ckgun/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
@@ -123,3 +130,6 @@ bindkey -e
 
 # FIGlet with lolcat
 figlet -w 80 -f slant -l Typiespectre. | lolcat
+
+# for vim color scheme
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"

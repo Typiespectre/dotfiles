@@ -60,11 +60,12 @@ endif
 filetype indent plugin on
 " set hlsearch
 " set nu
-set ts=4
+set tabstop=4
+set softtabstop=4
 set expandtab
-set sw=4
+set shiftwidth=4
 set autoindent
-" set smartindent
+set smartindent
 " set smartcase
 set cindent
 set smarttab
@@ -125,10 +126,10 @@ au CursorHold * checktime
 set splitright
 
 " buffer size
-nmap <silent> <C-k> :resize +5<CR>
-nmap <silent> <C-j> :resize -5<CR>
-nmap <silent> <C-h> :vertical resize -5<CR>
-nmap <silent> <C-l> :vertical resize +5<CR>
+nmap <silent> <C-k> :resize +2<CR>
+nmap <silent> <C-j> :resize -2<CR>
+nmap <silent> <C-l> :vertical resize -2<CR>
+nmap <silent> <C-h> :vertical resize +2<CR>
 
 " vim-multiple-cursor
 let g:multi_cursor_use_default_mapping=0
@@ -147,9 +148,6 @@ map <ScrollWheelDown> <C-E>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
-" no yank while delete
-xnoremap D "_dd
-
 "Cursor settings:
 
 "  1 -> blinking block
@@ -167,6 +165,9 @@ let &t_EI.="\e[5 q" "EI = NORMAL mode (ELSE)
 set ttimeout
 set ttimeoutlen=1
 set ttyfast
+
+" nerd-tree setting
+nmap <F9> :NERDTreeToggle<CR>
 
 
 
@@ -300,6 +301,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " vim-syntastic
 Plugin 'scrooloose/syntastic'
 
+" nerd-tree
+Plugin 'scrooloose/nerdtree'
+
 " vim-multiple-cursor
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -309,7 +313,7 @@ Plugin 'terryma/vim-smooth-scroll'
 " vim-current-word
 Plugin 'dominikduda/vim_current_word'
 
-" vim colorscheme: gouvbox
+" vim colorscheme: grouvbox
 Plugin 'morhetz/gruvbox'
 autocmd vimenter * ++nested colorscheme gruvbox
 
@@ -336,3 +340,4 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+

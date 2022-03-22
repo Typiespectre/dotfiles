@@ -133,3 +133,13 @@ figlet -w 80 -f slant -l Typiespectre. | lolcat
 
 # for vim color scheme
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+# # pyenv setting
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
+# 
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+# export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+# 

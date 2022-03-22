@@ -317,6 +317,9 @@ Plugin 'dominikduda/vim_current_word'
 Plugin 'morhetz/gruvbox'
 autocmd vimenter * ++nested colorscheme gruvbox
 
+" vim-prettier
+Plugin 'prettier/vim-prettier'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -340,4 +343,45 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+
+" vim-prettier setting
+" Max line length that prettier will wrap on: a number or 'auto' (use
+" textwidth).
+" default: 'auto'
+let g:prettier#config#print_width = 'auto'
+
+" number of spaces per indentation level: a number or 'auto' (use
+" softtabstop)
+" default: 'auto'
+let g:prettier#config#tab_width = 'auto'
+
+" use tabs instead of spaces: true, false, or auto (use the expandtab setting).
+" default: 'auto'
+let g:prettier#config#use_tabs = 'auto'
+
+" flow|babylon|typescript|css|less|scss|json|graphql|markdown or empty string
+" (let prettier choose).
+" default: ''
+let g:prettier#config#parser = ''
+
+" cli-override|file-override|prefer-file
+" default: 'file-override'
+let g:prettier#config#config_precedence = 'file-override'
+
+" always|never|preserve
+" default: 'preserve'
+let g:prettier#config#prose_wrap = 'preserve'
+
+" css|strict|ignore
+" default: 'css'
+let g:prettier#config#html_whitespace_sensitivity = 'css'
+
+" false|true
+" default: 'false'
+let g:prettier#config#require_pragma = 'false'
+
+" Define the flavor of line endings
+" lf|crlf|cr|all
+" defaut: 'lf'
+let g:prettier#config#end_of_line = get(g:, 'prettier#config#end_of_line', 'lf')
 

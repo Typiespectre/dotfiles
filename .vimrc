@@ -51,7 +51,7 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
-
+" -------------------------------------------------------"
 
 " ***  python vim setting and my old vim setting! ***
 " if has ("syntax")
@@ -71,6 +71,7 @@ set cindent
 set smarttab
 set fileencodings=utf-8,euc-kr
 
+" -------------------------------------------------------"
 
 " Other Program Settings
 set title " 타이틀바에 현재 편집중인 파일 표시
@@ -149,7 +150,6 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 10, 4)<CR>
 
 "Cursor settings:
-
 "  1 -> blinking block
 "  2 -> solid block 
 "  3 -> blinking underscore
@@ -169,7 +169,19 @@ set ttyfast
 " nerd-tree setting
 nmap <F9> :NERDTreeToggle<CR>
 
+" making own command: delede bracket
+nmap <silent> <C-[> yi(va(p<CR>
 
+" autocomplete bracket
+" inoremap " ""<left>
+" inoremap ' ''<left>
+" inoremap ( ()<left>
+" inoremap [ []<left>
+" inoremap { {}<left>
+" inoremap {<CR> {<CR>}<ESC>O
+" inoremap {;<CR> {<CR>};<ESC>O
+
+" -------------------------------------------------------"
 
 " Comments in Vimscript start with a `"`.
 
@@ -252,7 +264,7 @@ set mouse+=a
 "inoremap <Up>    <ESC>:echoe 'Use k'<CR>
 "inoremap <down>  <esc>:echoe 'use j'<cr>
 
-
+" -------------------------------------------------------"
 
 " CtrlP settings
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -272,7 +284,7 @@ if has ('persistent_undo')
     set undofile
 endif
 
-
+" -------------------------------------------------------"
 
 "https://myeongjae.kim/blog/2016/10/06/vimlinux-4-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%A4%EB%8B%88%EC%A0%80%EB%A5%BC-%EC%84%A4%EC%B9%98%ED%95%98%EA%B3%A0-vim-airline-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0
 
@@ -317,9 +329,6 @@ Plugin 'dominikduda/vim_current_word'
 Plugin 'morhetz/gruvbox'
 autocmd vimenter * ++nested colorscheme gruvbox
 
-" vim-prettier
-Plugin 'prettier/vim-prettier'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -343,45 +352,4 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
 set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
-
-" vim-prettier setting
-" Max line length that prettier will wrap on: a number or 'auto' (use
-" textwidth).
-" default: 'auto'
-let g:prettier#config#print_width = 'auto'
-
-" number of spaces per indentation level: a number or 'auto' (use
-" softtabstop)
-" default: 'auto'
-let g:prettier#config#tab_width = 'auto'
-
-" use tabs instead of spaces: true, false, or auto (use the expandtab setting).
-" default: 'auto'
-let g:prettier#config#use_tabs = 'auto'
-
-" flow|babylon|typescript|css|less|scss|json|graphql|markdown or empty string
-" (let prettier choose).
-" default: ''
-let g:prettier#config#parser = ''
-
-" cli-override|file-override|prefer-file
-" default: 'file-override'
-let g:prettier#config#config_precedence = 'file-override'
-
-" always|never|preserve
-" default: 'preserve'
-let g:prettier#config#prose_wrap = 'preserve'
-
-" css|strict|ignore
-" default: 'css'
-let g:prettier#config#html_whitespace_sensitivity = 'css'
-
-" false|true
-" default: 'false'
-let g:prettier#config#require_pragma = 'false'
-
-" Define the flavor of line endings
-" lf|crlf|cr|all
-" defaut: 'lf'
-let g:prettier#config#end_of_line = get(g:, 'prettier#config#end_of_line', 'lf')
 

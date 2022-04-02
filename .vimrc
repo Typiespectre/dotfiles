@@ -57,7 +57,7 @@ endif
 " if has ("syntax")
 "     syntax on
 " endif
-filetype indent plugin on
+filetype indent plugin on   " 파일 종류에 따른 구문 강조
 " set hlsearch
 " set nu
 set tabstop=4
@@ -70,6 +70,7 @@ set smartindent
 set cindent
 set smarttab
 set fileencodings=utf-8,euc-kr
+set fencs=ucs-bom,utf-8,euc-kr
 
 " -------------------------------------------------------"
 
@@ -83,6 +84,8 @@ set wrap
 set linebreak
 " set paste " 붙여넣기 설정
 set nobackup " 백업파일 삭제
+set showmatch   " 매칭되는 괄호 보여줌
+" set wmnu    " tab 눌렀을 때 자동완성 가능한 목록
 
 " Markdown 문법 설정 (Git 에서 사용)
 augroup markdown
@@ -325,9 +328,13 @@ Plugin 'terryma/vim-smooth-scroll'
 " vim-current-word
 Plugin 'dominikduda/vim_current_word'
 
-" vim colorscheme: grouvbox
+" vim colorscheme: gruvbox
 Plugin 'morhetz/gruvbox'
 autocmd vimenter * ++nested colorscheme gruvbox
+
+" vim delimitMate
+Plugin 'Raimondi/delimitMate'
+let delimitMate_expand_cr=1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

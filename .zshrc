@@ -52,7 +52,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -70,9 +70,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git) 
-plugins=(zsh-autosuggestions)
 plugins=(
+    git
+    # zsh-autosuggestions
+    # zsh-syntax-highlighting
     tmux
 )
 
@@ -110,31 +111,36 @@ alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z`'
 alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
+alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m%x2    0%s%x20%x1b[33m(%an)%x1b[0m\""
 # alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
 # blinking vertial cursor
-# echo '\e[5 q'
 _fix_cursor() {
    echo -ne '\e[5 q'
 }
 precmd_functions+=(_fix_cursor)
 
+# prompt pure theme
 fpath+=/Users/ckgun/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-bindkey -e
+# vim style bindkey (if you want use emacs style: bindkey -e)
+bindkey -v
+# remove mode switching delay
+export KEYTIMEOUT=5
 
 # FIGlet with lolcat
-figlet -w 80 -f slant -l Typiespectre. | lolcat
+figlet -w 80 -f slant -l sideseal. | lolcat
 
 # for vim color scheme
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
-# # pyenv setting
+# Plugins
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# # pyenv setting - but something wrong!
 # export PATH="$HOME/.pyenv/bin:$PATH"
 # export PATH="/usr/local/bin:$PATH"
 # 

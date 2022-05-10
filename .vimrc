@@ -145,8 +145,8 @@ let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 " smooth mouse scroll
-map <ScrollWheelUp> <C-Y>
-map <ScrollWheelDown> <C-E>
+" map <ScrollWheelUp> <C-Y>
+" map <ScrollWheelDown> <C-E>
 
 " vim-smooth-scroll
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 10, 4)<CR>

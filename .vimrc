@@ -60,10 +60,10 @@ endif
 filetype indent plugin on   " 파일 종류에 따른 구문 강조
 " set hlsearch
 " set nu
-" set tabstop=4
+set tabstop=4
 " set softtabstop=4
 " set expandtab
-" set shiftwidth=4
+set shiftwidth=4
 set autoindent
 set smartindent
 " set smartcase

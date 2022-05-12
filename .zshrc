@@ -116,18 +116,18 @@ alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
 alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m    %s%x20%x1b[33m(%an)%x1b[0m\""
-function fvim(){
+function vimf(){
     local fname
     fname=$(fzf) || return
     vim "$fname"
 }
-alias fvim=fvim
-function fcd(){
+alias vimf=vimf
+function cdf(){
     local dirname
     dirname=$(fd --type d -d 1 | fzf) || return
     cd "$dirname"
 }
-alias fcd=fcd
+alias cdf=cdf
 # alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
 # blinking vertial cursor

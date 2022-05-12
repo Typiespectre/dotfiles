@@ -108,6 +108,16 @@ noremap <Leader>P "+p
 nnoremap k gk
 nnoremap j gj
 
+" arrow keys keymapping w/ h j k l
+" nnoremap <LEFT>		h
+" nnoremap <RIGHT>	l
+nnoremap <UP>		gk
+nnoremap <DOWN>		gj
+" inoremap <LEFT>		<C-O>h
+" inoremap <RIGHT>	<C-O>l
+inoremap <UP>		<C-O>gk
+inoremap <DOWN>		<C-O>gj
+
 " cursor last word
 set ve+=onemore
 noremap $ $l

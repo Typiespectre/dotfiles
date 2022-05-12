@@ -60,10 +60,10 @@ endif
 filetype indent plugin on   " 파일 종류에 따른 구문 강조
 " set hlsearch
 " set nu
-set tabstop=4
-set softtabstop=4
-set expandtab
-set shiftwidth=4
+" set tabstop=4
+" set softtabstop=4
+" set expandtab
+" set shiftwidth=4
 set autoindent
 set smartindent
 " set smartcase
@@ -104,6 +104,10 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
+" 한 줄 씩 이동
+nnoremap k gk
+nnoremap j gj
+
 " cursor last word
 set ve+=onemore
 noremap $ $l
@@ -118,8 +122,16 @@ set guifont=D2Coding:h12:cANSI:qDEFAULT
 set guifontwide=D2Coding:h14
 
 " buffer movement
-"nnoremap <silent> <C-h> :bprevious!<Enter>
-"nnoremap <silent> <C-l> :bnext!<Enter>
+nnoremap <C-q> :bprevious!<CR>
+nnoremap <C-e> :bnext!<CR>
+"
+" Ctrl+ww = 버퍼 간 움직이기!
+" :enew = 새로운 버퍼 생성
+" :bd = 버퍼 닫기
+
+" vim buffer down with NERDTree
+nnoremap bq :bp<CR>:bd #<CR>
+nnoremap be :enew<CR>
 
 " autoread
 set autoread
@@ -129,7 +141,7 @@ au CursorHold * checktime
 " set splitbelow
 set splitright
 
-" buffer size
+" change buffer size
 nmap <silent> <C-k> :resize +2<CR>
 nmap <silent> <C-j> :resize -2<CR>
 nmap <silent> <C-l> :vertical resize -2<CR>

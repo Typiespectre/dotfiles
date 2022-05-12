@@ -72,7 +72,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    # fzf
+    fzf
     # zsh-autosuggestions
     # zsh-syntax-highlighting
     # tmux
@@ -111,11 +111,23 @@ source $ZSH/oh-my-zsh.sh
 
 alias ibrew='arch -x86_64 /usr/local/bin/brew'
 alias brew='arch -arm64 /opt/homebrew/bin/brew'
-alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z`'
+alias mddate='echo `date +%Y-%m-%d\ %H:%M:%S\ %z` | pbcopy'
 alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
 alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m    %s%x20%x1b[33m(%an)%x1b[0m\""
+function fvim(){
+    local fname
+    fname=$(fzf) || return
+    vim "$fname"
+}
+alias fvim=fvim
+function fcd(){
+    local dirname
+    dirname=$(fd --type d -d 1 | fzf) || return
+    cd "$dirname"
+}
+alias fcd=fcd
 # alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
 
 # blinking vertial cursor
@@ -141,7 +153,7 @@ figlet -w 80 -f slant -l sideseal. | lolcat
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # fzf setting
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fd . $HOME'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # Plugins

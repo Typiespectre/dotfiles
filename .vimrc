@@ -152,10 +152,10 @@ au CursorHold * checktime
 set splitright
 
 " change buffer size
-nmap <silent> <C-k> :resize +2<CR>
-nmap <silent> <C-j> :resize -2<CR>
-nmap <silent> <C-l> :vertical resize -2<CR>
-nmap <silent> <C-h> :vertical resize +2<CR>
+nmap <silent> <C-w><C-k> :resize +5<CR>
+nmap <silent> <C-w><C-j> :resize -5<CR>
+nmap <silent> <C-w><C-l> :vertical resize -5<CR>
+nmap <silent> <C-w><C-h> :vertical resize +5<CR>
 
 " vim-multiple-cursor
 let g:multi_cursor_use_default_mapping=0
@@ -195,7 +195,7 @@ set ttyfast
 nmap <F9> :NERDTreeToggle<CR>
 
 " making own command: delede bracket
-nmap <silent> <C-[> yi(va(p<CR>
+" nmap <silent> <C-[> yi(va(p<CR>
 
 " autocomplete bracket
 " inoremap " ""<left>

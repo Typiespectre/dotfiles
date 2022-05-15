@@ -1,9 +1,0 @@
-[user]
-	name = Choi GyeongGeon
-	email = ckgun@naver.com
-[core]
-	precomposeunicode = true
-	quotepath = false
-	excludesfile = /Users/ckgun/.gitignore_global
-[alias]
-	graph = log --all --graph --decorate --oneline

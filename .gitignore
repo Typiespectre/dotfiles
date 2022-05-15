@@ -1,1 +1,8 @@
+.gitconfig
+.DS_Store
+
 .tmux
+.tmux.conf~
+.tmux.conf.local~
+.vimrc~
+.zshrc~

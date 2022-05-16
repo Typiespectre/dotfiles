@@ -125,14 +125,21 @@ function vimf(){
 alias vimf=vimf
 function cdf(){
     local dirname
+	local value
 	while true ; do
 		if [ -z "$@" ]; then
-			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' | grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
+			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+			cd "$dirname"
 		else
-			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' | grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
-			set -- "$dirname"
+			cd "$@"
+			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
+			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+# 			dirname=$(ls -al "$@" | sed -n "2,$ p" | grep '^d' \
+# 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | sed "s|^|$@\/|g" | fzf) || return
+			set -- "."
+			cd "$dirname"
 		fi
-    	cd "$dirname"
 	done
 }
 alias cdf=cdf

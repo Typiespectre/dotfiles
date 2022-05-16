@@ -4,11 +4,11 @@
 " Last change:	2019 Dec 17
 "
 " To use it, copy it to
-"	       for Unix:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"		   for Unix:  ~/.vimrc
+"		  for Amiga:  s:.vimrc
 "	 for MS-Windows:  $VIM\_vimrc
-"	      for Haiku:  ~/config/settings/vim/vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"		  for Haiku:  ~/config/settings/vim/vimrc
+"		for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings, bail
 " out.
@@ -115,8 +115,8 @@ nnoremap <UP>		gk
 nnoremap <DOWN>		gj
 " inoremap <LEFT>		<C-O>h
 " inoremap <RIGHT>	<C-O>l
-inoremap <UP>		<C-O>gk
-inoremap <DOWN>		<C-O>gj
+" inoremap <UP>		<C-O>gk
+" inoremap <DOWN>		<C-O>gj
 
 " cursor last word
 set ve+=onemore
@@ -142,6 +142,10 @@ nnoremap <C-e> :bnext!<CR>
 " vim buffer down with NERDTree
 nnoremap bq :bp<CR>:bd #<CR>
 nnoremap be :enew<CR>
+
+" excute C compile && python for algorithm
+nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'
+nnoremap pp :execute '!python main.py < input.txt > output.txt'
 
 " autoread
 set autoread
@@ -374,7 +378,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 " for vim-airline
-let g:airline#extensions#tabline#enabled = 1 			  " turn on buffer list
+let g:airline#extensions#tabline#enabled = 1			  " turn on buffer list
 let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
 let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
 let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format

@@ -116,6 +116,7 @@ alias mv="mv -i"
 alias df="df -h"
 alias info="neofetch"
 alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m    %s%x20%x1b[33m(%an)%x1b[0m\""
+alias rld='exec zsh'
 function vimf(){
     local fname
 	fname=$(fd --type f -H -d 1 | fzf) || return
@@ -124,12 +125,15 @@ function vimf(){
 alias vimf=vimf
 function cdf(){
     local dirname
-	if [ -z "$@" ]; then
-    	dirname=$(fd --type d -d 1 | fzf) || return
-	else
-		dirname=$(fd . "$@" --type d -d 1 | fzf) || return
-	fi
-    cd "$dirname"
+	while true ; do
+		if [ -z "$@" ]; then
+			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' | grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+		else
+			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' | grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+			set -- "$dirname"
+		fi
+    	cd "$dirname"
+	done
 }
 alias cdf=cdf
 # alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
@@ -157,7 +161,7 @@ figlet -w 80 -f slant -l sideseal. | lolcat
 source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # fzf setting
-export FZF_DEFAULT_COMMAND='fd . $HOME'
+# export FZF_DEFAULT_COMMAND='fd . $HOME'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # Plugins

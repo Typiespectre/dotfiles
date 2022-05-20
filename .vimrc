@@ -144,8 +144,8 @@ nnoremap bq :bp<CR>:bd #<CR>
 nnoremap be :enew<CR>
 
 " excute C compile && python for algorithm
-nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'
-nnoremap pp :execute '!python main.py < input.txt > output.txt'
+nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'<CR>
+nnoremap pp :execute '!python main.py < input.txt > output.txt'<CR>
 
 " autoread
 set autoread

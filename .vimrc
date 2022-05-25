@@ -147,6 +147,9 @@ nnoremap be :enew<CR>
 nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'<CR>
 nnoremap pp :execute '!python main.py < input.txt > output.txt'<CR>
 
+" command for algorithm study
+command Openio :vsplit output.txt | :split input.txt
+
 " autoread
 set autoread
 au CursorHold * checktime

@@ -119,27 +119,34 @@ alias gl="git log --graph --full-history --all --color --date=short --pretty=tfo
 alias rld='exec zsh'
 function vimf(){
     local fname
-	fname=$(fd --type f -H -d 1 | fzf) || return
+	printf 'Current directory: %s' "$(pwd)"
+	fname=$(fd --type f -H -d 1 | sed 's/.\///g' | fzf) || return
     vim "$fname"
+	printf "\r%b" "\033[2K"
 }
 alias vimf=vimf
 function cdf(){
     local dirname
-	local value
 	while true ; do
+		printf 'Current directory: %s' "$(pwd)"
 		if [ -z "$@" ]; then
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
+			if [ "$dirname" = "." ]; then
+				vimf
+			fi
 			cd "$dirname"
 		else
 			cd "$@"
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
-# 			dirname=$(ls -al "$@" | sed -n "2,$ p" | grep '^d' \
-# 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | sed "s|^|$@\/|g" | fzf) || return
+			if [ "$dirname" = "." ]; then
+				vimf
+			fi
 			set -- "."
 			cd "$dirname"
 		fi
+		printf "\r%b" "\033[2K"
 	done
 }
 alias cdf=cdf

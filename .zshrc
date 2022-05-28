@@ -133,7 +133,7 @@ function cdf(){
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
 			if [ "$dirname" = "." ]; then
-				vimf
+				return
 			fi
 			cd "$dirname"
 		else
@@ -141,7 +141,7 @@ function cdf(){
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
 			if [ "$dirname" = "." ]; then
-				vimf
+				return
 			fi
 			set -- "."
 			cd "$dirname"

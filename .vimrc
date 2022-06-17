@@ -115,8 +115,8 @@ nnoremap <UP>		gk
 nnoremap <DOWN>		gj
 " inoremap <LEFT>		<C-O>h
 " inoremap <RIGHT>	<C-O>l
-" inoremap <UP>		<C-O>gk
-" inoremap <DOWN>		<C-O>gj
+inoremap <UP>		<C-O>gk
+inoremap <DOWN>		<C-O>gj
 
 " cursor last word
 set ve+=onemore
@@ -212,6 +212,8 @@ nmap <F9> :NERDTreeToggle<CR>
 " inoremap { {}<left>
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
+"
+set noswapfile
 
 " -------------------------------------------------------"
 

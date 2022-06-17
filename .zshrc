@@ -86,6 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/opt/homebrew/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -128,8 +129,8 @@ alias vimf=vimf
 function cdf(){
     local dirname
 	while true ; do
-		printf 'Current directory: %s' "$(pwd)"
 		if [ -z "$@" ]; then
+			printf 'Current directory: %s' "$(pwd)"
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
 			if [ "$dirname" = "." ]; then
@@ -138,6 +139,7 @@ function cdf(){
 			cd "$dirname"
 		else
 			cd "$@"
+			printf 'Current directory: %s' "$(pwd)"
 			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
 			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
 			if [ "$dirname" = "." ]; then

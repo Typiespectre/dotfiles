@@ -1,5 +1,7 @@
+" An example for a vimrc file.
+"
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	`!date`
+" Last change:	2019 Dec 17
 "
 " To use it, copy it to
 "		   for Unix:  ~/.vimrc
@@ -210,6 +212,8 @@ nmap <F9> :NERDTreeToggle<CR>
 " inoremap { {}<left>
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
+"
+set noswapfile
 
 " -------------------------------------------------------"
 

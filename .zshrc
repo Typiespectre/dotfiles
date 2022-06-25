@@ -174,7 +174,7 @@ export KEYTIMEOUT=5
 figlet -w 80 -f slant -l sideseal. | lolcat
 
 # for vim color scheme
-source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+# source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 # fzf setting
 # export FZF_DEFAULT_COMMAND='fd . $HOME'

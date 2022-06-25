@@ -1,3 +1,3 @@
 # dotfiles
 
-dotfiles about zsh, vim ant tmux
+My dotfiles about zsh, vim ant tmux

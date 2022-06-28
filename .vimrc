@@ -1,24 +1,42 @@
-"          _                    
-"   __   _(_)_ __ ___  _ __ ___ 
-"   \ \ / / | '_ ` _ \| '__/ __|
-"    \ V /| | | | | | | | | (__ 
-"   (_)_/ |_|_| |_| |_|_|  \___|
-"   
+" ========================================
+"
+"           _____                         
+"    ___   ____(_)______ _________________
+"   ___ | / /_  /__  __ `__ \_  ___/  ___/
+" _____ |/ /_  / _  / / / / /  /   / /__  
+" _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
+"
 " Maintainer: sideseal
-" ------------------------------
+" Last Modified: 2022-06-26 23:11:17
+" ========================================
+
 
 " 1. System preference
 set nocompatible
 syntax on
 set termguicolors
+" darkblue, murphy, slate, 
+colorscheme murphy
 set number
 set nuw=5
 set relativenumber
 set title
 set showtabline=2
 set laststatus=2
-set statusline=\ %<%l:%v\ [%P]%=%a\ %h%m%r\ %F\
-set showcmd
+" statusline settings >_<
+set statusline=
+set statusline +=\ %n\ 		"buffer number
+set statusline +=%{&ff}		"file format
+set statusline +=%y		"file type
+set statusline +=\ %<%F		"full path
+set statusline +=%m		"modified flag
+set statusline +=%=%5l		"current line
+set statusline +=/%L		"total lines
+set statusline +=%4v\ 		"virtual column number
+set statusline +=0x%04B\ 	"character under cursorset showcmd
+hi Statusline ctermbg=lightgreen ctermfg=black
+" ------------
+set wildmenu
 set ruler
 set nobackup
 set noswapfile
@@ -28,7 +46,7 @@ set mouse+=a
 set noimd
 set splitright
 set backspace=indent,eol,start
-" set hidden
+set hidden
 
 set ve+=onemore
 noremap $ $l
@@ -36,11 +54,12 @@ noremap $ $l
 set wrap
 set linebreak
 
-set clipboard=unnamedplus
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+set clipboard=unnamed
+nnoremap y "*y
+nnoremap p "*p
+nnoremap Y "+y
+nnoremap P "+p
+set timeout timeoutlen=1
 
 augroup markdown
 	autocmd!
@@ -51,22 +70,29 @@ set nofoldenable
 set hlsearch
 set incsearch
 set showmatch
+hi MatchParen cterm=bold ctermbg=lightgreen ctermfg=black
 nnoremap <esc><esc> :noh<return>
 set ignorecase
 set smartcase
 set nows
 
-sy enable
 filetype indent plugin on
 set autoindent
 set smartindent
 set cindent
 set smarttab
+" set tabstop=4
 set fileencodings=utf-8,euc-kr
 set fencs=ucs-bom,utf-8,euc-kr
 set guifont=D2Coding:h12:cHANGEUL:qDEFAULT
 set guifont=D2Coding:h12:cANSI:qDEFAULT
 set guifontwide=D2Coding:h14
+set list
+" set listchars=tab:•·,trail:─,space:␣,eol:$
+set listchars=tab:•·
+hi NonText ctermfg=darkgrey guifg=grey70
+hi SpecialKey ctermfg=darkgrey guifg=grey70
+
 
 nnoremap k gk
 nnoremap j gj
@@ -109,9 +135,10 @@ noremap <leader>0 :tablast<CR>
 " nmap <leader>k :resize +5<CR>
 " nmap <leader>j :resize -5<CR>
 
+let g:netrw_sort_sequence = '[\/]$,*'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
+let g:netrw_browse_split = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_fastbrowse = 0
@@ -119,8 +146,23 @@ let g:netrw_fastbrowse = 0
 "   autocmd!
 "   autocmd VimEnter * :Vexplore
 " augroup END
-nnoremap <TAB> :Vexplore %:p:h<CR>
-autocmd FileType netrw nnoremap <buffer> <TAB> :bd<CR>
+nnoremap <silent> <TAB> :Vexplore %:p:h<CR>
+autocmd FileType netrw nnoremap <buffer> <silent> <TAB> :bd<CR>
+
+if has('persistent_undo')
+    let s:vimDir = '$HOME/.vim'
+    let &runtimepath.=','.s:vimDir
+    let s:undoDir = expand(s:vimDir . '/undodir')
+
+    call system('mkdir ' . s:vimDir)
+    call system('mkdir ' . s:undoDir)
+
+    let &undodir = s:undoDir
+    set undofile
+endif
+
+
+autocmd BufWritePre ~/.vimrc :1,10s/^\" Last Modified: \zs.*$/\=strftime('%Y-%m-%d %H:%M:%S')/
 
 
 " 0. Tips to remember

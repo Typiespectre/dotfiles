@@ -7,11 +7,11 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2022-06-26 23:11:17
+" Last Modified: 2022-06-29 22:41:01
 " ========================================
 
 
-" 1. System preference
+" 1. General setup
 set nocompatible
 syntax on
 set termguicolors
@@ -24,6 +24,7 @@ set title
 set showtabline=2
 set laststatus=2
 " statusline settings >_<
+" --------------------------------------------
 set statusline=
 set statusline +=\ %n\ 		"buffer number
 set statusline +=%{&ff}		"file format
@@ -35,9 +36,10 @@ set statusline +=/%L		"total lines
 set statusline +=%4v\ 		"virtual column number
 set statusline +=0x%04B\ 	"character under cursorset showcmd
 hi Statusline ctermbg=lightgreen ctermfg=black
-" ------------
+" --------------------------------------------
 set wildmenu
 set ruler
+set showcmd
 set nobackup
 set noswapfile
 set noerrorbells visualbell t_vb=
@@ -47,19 +49,23 @@ set noimd
 set splitright
 set backspace=indent,eol,start
 set hidden
+set history=1000
 
 set ve+=onemore
 noremap $ $l
 
 set wrap
 set linebreak
+" set breakindentopt=shift:2,min:40,sbr
+set showbreak=↳ 
+set breakindent
 
 set clipboard=unnamed
 nnoremap y "*y
 nnoremap p "*p
 nnoremap Y "+y
 nnoremap P "+p
-set timeout timeoutlen=1
+set timeout timeoutlen=200
 
 augroup markdown
 	autocmd!
@@ -71,10 +77,10 @@ set hlsearch
 set incsearch
 set showmatch
 hi MatchParen cterm=bold ctermbg=lightgreen ctermfg=black
-nnoremap <esc><esc> :noh<return>
 set ignorecase
 set smartcase
 set nows
+nnoremap <ESC><ESC> :noh<return>
 
 filetype indent plugin on
 set autoindent
@@ -89,7 +95,7 @@ set guifont=D2Coding:h12:cANSI:qDEFAULT
 set guifontwide=D2Coding:h14
 set list
 " set listchars=tab:•·,trail:─,space:␣,eol:$
-set listchars=tab:•·
+set listchars=tab:•·,trail:─
 hi NonText ctermfg=darkgrey guifg=grey70
 hi SpecialKey ctermfg=darkgrey guifg=grey70
 
@@ -98,6 +104,10 @@ nnoremap k gk
 nnoremap j gj
 nnoremap <UP>	gk
 nnoremap <DOWN>	gj
+
+set cursorline
+set cursorlineopt=number
+hi CursorLineNr cterm=bold
 
 autocmd VimLeave * let &t_me="\<Esc>]50;CursorShape=1\x7"
 let &t_SI.="\e[5 q" "SI = INSERT mode
@@ -110,7 +120,7 @@ set ttyfast
 
 " 2. Personal settings
 
-command Openio :vsplit output.txt | :split input.txt
+command TT :vsplit output.txt | :split input.txt | :vertical resize 40<CR>
 nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'<CR>
 nnoremap pp :execute '!python main.py < input.txt > output.txt'<CR>
 
@@ -135,6 +145,8 @@ noremap <leader>0 :tablast<CR>
 " nmap <leader>k :resize +5<CR>
 " nmap <leader>j :resize -5<CR>
 
+" netwr setting moves like NERDTree!
+" --------------------------------------------
 let g:netrw_sort_sequence = '[\/]$,*'
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -142,12 +154,9 @@ let g:netrw_browse_split = 3
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
 let g:netrw_fastbrowse = 0
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Vexplore
-" augroup END
-nnoremap <silent> <TAB> :Vexplore %:p:h<CR>
-autocmd FileType netrw nnoremap <buffer> <silent> <TAB> :bd<CR>
+nnoremap <silent> <TAB><TAB> :Vexplore %:p:h<CR>
+autocmd FileType netrw nnoremap <buffer> <silent> <TAB><TAB> :bd<CR>
+" --------------------------------------------
 
 if has('persistent_undo')
     let s:vimDir = '$HOME/.vim'
@@ -160,6 +169,9 @@ if has('persistent_undo')
     let &undodir = s:undoDir
     set undofile
 endif
+set undolevels=1000
+
+let g:markdown_fenced_languages = ['html', 'python', 'vim', 'c', 'js=javascript', 'sh=shell', 'zsh', 'bash', 'css']
 
 
 autocmd BufWritePre ~/.vimrc :1,10s/^\" Last Modified: \zs.*$/\=strftime('%Y-%m-%d %H:%M:%S')/

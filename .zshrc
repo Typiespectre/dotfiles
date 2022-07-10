@@ -8,7 +8,12 @@ export ZSH="/Users/ckgun/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+
+# prompt pure theme
+fpath+=/Users/ckgun/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,6 +82,9 @@ plugins=(
     # zsh-syntax-highlighting
     # tmux
 )
+
+# Dumps to new location
+export ZSH_COMPDUMP=$ZSH/.cache/.zcompdump-$HOST
 
 # Export fzf path
 export FZF_BASE=/opt/homebrew/opt/fzf
@@ -159,11 +167,6 @@ _fix_cursor() {
    echo -ne '\e[5 q'
 }
 precmd_functions+=(_fix_cursor)
-
-# prompt pure theme
-fpath+=/Users/ckgun/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
 
 # vim style bindkey (if you want use emacs style: bindkey -e)
 bindkey -v

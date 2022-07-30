@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2022-06-29 22:41:01
+" Last Modified: 2022-07-26 20:59:11
 " ========================================
 
 
@@ -171,7 +171,7 @@ if has('persistent_undo')
 endif
 set undolevels=1000
 
-let g:markdown_fenced_languages = ['html', 'python', 'vim', 'c', 'js=javascript', 'sh=shell', 'zsh', 'bash', 'css']
+let g:markdown_fenced_languages = ['html', 'python', 'vim', 'c', 'js=javascript', 'sh=bash', 'zsh', 'css']
 
 
 autocmd BufWritePre ~/.vimrc :1,10s/^\" Last Modified: \zs.*$/\=strftime('%Y-%m-%d %H:%M:%S')/

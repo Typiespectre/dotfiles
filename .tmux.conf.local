@@ -379,9 +379,9 @@ bind-key y set-window-option synchronize-panes\; display-message "synchronize-pa
 
 # https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 # remap prefix from 'C-b' to 'C-a'
-unbind C-b
-set-option -g prefix C-a
-bind-key C-a send-prefix
+# unbind C-b
+# set-option -g prefix C-a
+# bind-key C-a send-prefix
 
 # split panes using | and -
 bind | split-window -h

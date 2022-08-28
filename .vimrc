@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2022-07-26 20:59:11
+" Last Modified: 2022-08-28 15:21:22
 " ========================================
 
 
@@ -156,6 +156,22 @@ let g:netrw_winsize = 25
 let g:netrw_fastbrowse = 0
 nnoremap <silent> <TAB><TAB> :Vexplore %:p:h<CR>
 autocmd FileType netrw nnoremap <buffer> <silent> <TAB><TAB> :bd<CR>
+autocmd FileType netrw setl bufhidden=wipe
+function! CloseNetrw() abort
+  for bufn in range(1, bufnr('$'))
+    if bufexists(bufn) && getbufvar(bufn, '&filetype') ==# 'netrw'
+      silent! execute 'bwipeout ' . bufn
+      if getline(2) =~# '^" Netrw '
+        silent! bwipeout
+      endif
+      return
+    endif
+  endfor
+endfunction
+augroup closeOnOpen
+  autocmd!
+  autocmd BufWinEnter * if getbufvar(winbufnr(winnr()), "&filetype") != "netrw"|call CloseNetrw()|endif
+aug END
 " --------------------------------------------
 
 if has('persistent_undo')

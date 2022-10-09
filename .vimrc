@@ -7,14 +7,20 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2022-08-28 15:21:22
+" Last Modified: 2022-10-09 17:30:05
 " ========================================
-
+set langmenu=en_US
+let $LANG = 'en_US'
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
 
 " 1. General setup
 set nocompatible
-syntax on
-set termguicolors
+syntax enable
+if has('termguicolors')
+    set termguicolors
+    set t_Co=256
+endif
 " darkblue, murphy, slate, 
 colorscheme murphy
 set number
@@ -35,7 +41,7 @@ set statusline +=%=%5l		"current line
 set statusline +=/%L		"total lines
 set statusline +=%4v\ 		"virtual column number
 set statusline +=0x%04B\ 	"character under cursorset showcmd
-hi Statusline ctermbg=lightgreen ctermfg=black
+hi StatusLine cterm=NONE ctermbg=lightgreen ctermfg=black guibg=#87FF87 guifg=#303030
 " --------------------------------------------
 set wildmenu
 set ruler
@@ -75,8 +81,9 @@ set nofoldenable
 
 set hlsearch
 set incsearch
+hi Search ctermbg=120 ctermfg=236 guibg=#87FF87 guifg=#303030
 set showmatch
-hi MatchParen cterm=bold ctermbg=lightgreen ctermfg=black
+hi MatchParen cterm=bold ctermbg=120 ctermfg=236 term=bold guibg=#87FF87 guifg=#303030
 set ignorecase
 set smartcase
 set nows
@@ -98,7 +105,6 @@ set list
 set listchars=tab:•·,trail:─
 hi NonText ctermfg=darkgrey guifg=grey70
 hi SpecialKey ctermfg=darkgrey guifg=grey70
-
 
 nnoremap k gk
 nnoremap j gj
@@ -188,7 +194,9 @@ endif
 set undolevels=1000
 
 let g:markdown_fenced_languages = ['html', 'python', 'vim', 'c', 'js=javascript', 'sh=bash', 'zsh', 'css']
-
+hi link markdownItalic Normal
+hi link markdownError Normal
+set maxmempattern=5000
 
 autocmd BufWritePre ~/.vimrc :1,10s/^\" Last Modified: \zs.*$/\=strftime('%Y-%m-%d %H:%M:%S')/
 

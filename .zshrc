@@ -196,7 +196,3 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
 # export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
 # 
-
-alias francinette=/Users/ckgun/francinette/tester.sh
-
-alias paco=/Users/ckgun/francinette/tester.sh

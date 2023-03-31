@@ -76,8 +76,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git
-    fzf
+#    git
+#    fzf
     # zsh-autosuggestions
     # zsh-syntax-highlighting
     # tmux
@@ -95,6 +95,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 export PATH=/opt/homebrew/bin:$PATH
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -126,42 +127,6 @@ alias df="df -h"
 alias info="neofetch"
 alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m    %s%x20%x1b[33m(%an)%x1b[0m\""
 alias rld='exec zsh'
-function vimf(){
-    local fname
-	printf 'Current directory: %s' "$(pwd)"
-	fname=$(fd --type f -H -d 1 | sed 's/.\///g' | fzf) || return
-    vim "$fname"
-	printf "\r%b" "\033[2K"
-}
-alias vimf=vimf
-function cdf(){
-    local dirname
-	while true ; do
-		if [ -z "$@" ]; then
-			printf 'Current directory: %s' "$(pwd)"
-			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
-			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
-			if [ "$dirname" = "." ]; then
-				return
-			fi
-			cd "$dirname"
-		else
-			cd "$@"
-			printf 'Current directory: %s' "$(pwd)"
-			dirname=$(ls -al | sed -n "2,$ p" | grep '^d' \
-			| grep -wv "[.][a-zA-Z].*" | awk '{print $9}' | fzf) || return
-			if [ "$dirname" = "." ]; then
-				return
-			fi
-			set -- "."
-			cd "$dirname"
-		fi
-		printf "\r%b" "\033[2K"
-	done
-}
-alias cdf=cdf
-# alias mdpandoc="pandoc --pdf-engine=xelatex --from markdown --template eisvogel --listings -V mainfont="NanumGothic" -t latex"
-
 # blinking vertial cursor
 _fix_cursor() {
    echo -ne '\e[5 q'
@@ -186,13 +151,3 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 # Plugins
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# # pyenv setting - but something wrong!
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# export PATH="/usr/local/bin:$PATH"
-# 
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-# export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
-# export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
-# 

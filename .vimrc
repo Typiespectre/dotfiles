@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2022-10-09 17:30:05
+" Last Modified: 2023-03-31 19:47:57
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -41,7 +41,7 @@ set statusline +=%=%5l		"current line
 set statusline +=/%L		"total lines
 set statusline +=%4v\ 		"virtual column number
 set statusline +=0x%04B\ 	"character under cursorset showcmd
-hi StatusLine cterm=NONE ctermbg=lightgreen ctermfg=black guibg=#87FF87 guifg=#303030
+hi StatusLine ctermbg=lightgreen ctermfg=black guibg=#87FF87 guifg=#303030
 " --------------------------------------------
 set wildmenu
 set ruler
@@ -94,7 +94,9 @@ set autoindent
 set smartindent
 set cindent
 set smarttab
-" set tabstop=4
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
 set fileencodings=utf-8,euc-kr
 set fencs=ucs-bom,utf-8,euc-kr
 set guifont=D2Coding:h12:cHANGEUL:qDEFAULT
@@ -103,8 +105,8 @@ set guifontwide=D2Coding:h14
 set list
 " set listchars=tab:•·,trail:─,space:␣,eol:$
 set listchars=tab:•·,trail:─
-hi NonText ctermfg=darkgrey guifg=grey70
-hi SpecialKey ctermfg=darkgrey guifg=grey70
+hi NonText ctermfg=darkgrey guifg=grey40
+hi SpecialKey ctermfg=darkgrey guifg=grey40
 
 nnoremap k gk
 nnoremap j gj
@@ -126,9 +128,11 @@ set ttyfast
 
 " 2. Personal settings
 
-command TT :vsplit output.txt | :split input.txt | :vertical resize 40<CR>
-nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'<CR>
-nnoremap pp :execute '!python main.py < input.txt > output.txt'<CR>
+"command TT :vsplit output.txt | :split input.txt | :vertical resize 40<CR>
+"nnoremap cc :execute '!make; ./app.out < input.txt > output.txt'<CR>
+"nnoremap pp :execute '!python main.py < input.txt > output.txt'<CR>
+
+nnoremap HH :Stdheader<CR>
 
 set autoread
 au CursorHold * checktime

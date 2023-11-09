@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-11-10 00:16:35
+" Last Modified: 2023-11-10 00:26:26
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -224,7 +224,8 @@ function! CreateCenteredComment(comment)
 	let right_spaces = spaces_on_each_side + (len(a:comment) % 2)
 
 	" The input comment to be inserted into the comment block.
-	let inner_comment = '/* ' . repeat(' ', left_spaces) . a:comment . repeat(' ', right_spaces) . ' */'
+	let inner_comment = '/* ' . repeat(' ', left_spaces) . a:comment .
+						\ repeat(' ', right_spaces) . ' */'
 
 	" The beginning part of the comment block.
 	let start_comment = '/* ' . repeat('*', 74) . ' */'

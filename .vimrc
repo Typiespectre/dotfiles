@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-11-10 00:09:04
+" Last Modified: 2023-11-10 00:16:35
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -206,7 +206,7 @@ set maxmempattern=5000
 autocmd BufWritePre ~/.vimrc :1,10s/^\" Last Modified: \zs.*$/\=strftime('%Y-%m-%d %H:%M:%S')/
 
 function! CreateCenteredComment(comment)
-	" Check if comment fits within an 80-character comment.
+	" Check if the comment fits within an 80-character comment.
 	if len(a:comment) >= 74
 		echoerr "Error: Comment is too long"
 		return
@@ -223,7 +223,7 @@ function! CreateCenteredComment(comment)
 	let left_spaces = spaces_on_each_side
 	let right_spaces = spaces_on_each_side + (len(a:comment) % 2)
 
-	" The Input comment to be inserted into the comment block.
+	" The input comment to be inserted into the comment block.
 	let inner_comment = '/* ' . repeat(' ', left_spaces) . a:comment . repeat(' ', right_spaces) . ' */'
 
 	" The beginning part of the comment block.
@@ -232,10 +232,13 @@ function! CreateCenteredComment(comment)
 	" The ending part of the comment block.
 	let end_comment = '/* ' . repeat('*', 74) . ' */'
 
-	" Insert the completed comment at the current cursor position.
+	" Make the completed comment block at the current cursor position.
 	call append(current_line, [start_comment, inner_comment, end_comment])
 
-	" Move the cursor down below the comment.
+	" Move the cursor down below the comment block and add an empty line.
+	call append(current_line + 4, [''])
+
+	" Move the cursor down.
 	call cursor(current_line + 4, 1)
 endfunction
 

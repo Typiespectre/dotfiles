@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-03-31 19:47:57
+" Last Modified: 2023-11-09 21:19:24
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -21,11 +21,12 @@ if has('termguicolors')
     set termguicolors
     set t_Co=256
 endif
-" darkblue, murphy, slate, 
-colorscheme murphy
+" darkblue, slate, torte
+colorscheme blue
 set number
 set nuw=5
 set relativenumber
+set cc=80
 set title
 set showtabline=2
 set laststatus=2
@@ -41,7 +42,7 @@ set statusline +=%=%5l		"current line
 set statusline +=/%L		"total lines
 set statusline +=%4v\ 		"virtual column number
 set statusline +=0x%04B\ 	"character under cursorset showcmd
-hi StatusLine ctermbg=lightgreen ctermfg=black guibg=#87FF87 guifg=#303030
+" hi StatusLine ctermbg=lightgreen ctermfg=black guibg=#87FF87 guifg=#303030
 " --------------------------------------------
 set wildmenu
 set ruler
@@ -81,9 +82,9 @@ set nofoldenable
 
 set hlsearch
 set incsearch
-hi Search ctermbg=120 ctermfg=236 guibg=#87FF87 guifg=#303030
+" hi Search ctermbg=120 ctermfg=236 guibg=#87FF87 guifg=#303030
 set showmatch
-hi MatchParen cterm=bold ctermbg=120 ctermfg=236 term=bold guibg=#87FF87 guifg=#303030
+" hi MatchParen cterm=bold ctermbg=120 ctermfg=236 term=bold guibg=#87FF87 guifg=#303030
 set ignorecase
 set smartcase
 set nows

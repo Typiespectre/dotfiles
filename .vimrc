@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-12-24 19:45:35
+" Last Modified: 2023-12-24 22:26:17
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -107,7 +107,7 @@ set guifontwide=D2Coding:h14
 set list
 " set listchars=tab:•·,trail:─,space:␣,eol:$
 set listchars=tab:•·,trail:─
-hi NonText ctermfg=darkgrey guifg=grey40
+hi NonText ctermfg=darkgrey guifg=grey40 guibg=#0000AA
 hi SpecialKey ctermfg=darkgrey guifg=grey40
 
 nnoremap k gk

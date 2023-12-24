@@ -141,7 +141,8 @@ bindkey -v
 export KEYTIMEOUT=5
 
 # FIGlet with lolcat
-figlet -w 80 -f slant -l sideseal. | lolcat
+# figlet -w 80 -f slant -l sideseal. | lolcat
+figlet -w 80 -f slant -l Teknomiko
 
 # for vim color scheme
 # source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"

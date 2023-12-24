@@ -24,7 +24,7 @@ let g:colors_name="borlandp"
 
 " some variables for background color:
 " let s:borland_blue = "#0000AA"
-let s:borland_blue = "#0A25AE"
+let s:borland_blue = "#0220B3"
 let s:dark_blue = "#00003c"
 let s:dark_gray = "#1B1C1A"
 let s:black = "#000000"

@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-12-24 22:26:17
+" Last Modified: 2023-12-24 23:08:13
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -27,6 +27,8 @@ colorscheme borlandp
 set number
 set nuw=5
 set relativenumber
+hi LineNr guifg=Gray
+hi CursorLineNr guifg=yellow
 set cc=80
 set title
 set showtabline=2
@@ -107,8 +109,10 @@ set guifontwide=D2Coding:h14
 set list
 " set listchars=tab:•·,trail:─,space:␣,eol:$
 set listchars=tab:•·,trail:─
-hi NonText ctermfg=darkgrey guifg=grey40 guibg=#0000AA
-hi SpecialKey ctermfg=darkgrey guifg=grey40
+" hi NonText ctermfg=darkgrey guifg=grey40 guibg=#0000AA
+" hi SpecialKey ctermfg=darkgrey guifg=grey40
+hi NonText ctermfg=Gray guifg=Gray guibg=#0000AA
+hi SpecialKey ctermfg=Gray guifg=Gray
 
 nnoremap k gk
 nnoremap j gj

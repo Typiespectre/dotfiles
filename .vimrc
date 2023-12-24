@@ -7,7 +7,7 @@
 " _(_)____/ /_/  /_/ /_/ /_//_/    \___/  
 "
 " Maintainer: sideseal
-" Last Modified: 2023-11-10 00:26:26
+" Last Modified: 2023-12-24 19:45:35
 " ========================================
 set langmenu=en_US
 let $LANG = 'en_US'
@@ -22,7 +22,8 @@ if has('termguicolors')
     set t_Co=256
 endif
 " darkblue, slate, torte
-colorscheme blue
+" colorscheme blue
+colorscheme borlandp
 set number
 set nuw=5
 set relativenumber

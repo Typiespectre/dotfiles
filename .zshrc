@@ -127,6 +127,8 @@ alias df="df -h"
 alias info="neofetch"
 alias gl="git log --graph --full-history --all --color --date=short --pretty=tformat:\"%x1b[31m%h%x08%x1b[0m%x20%ad %x1b[32m%d%x1b[0m    %s%x20%x1b[33m(%an)%x1b[0m\""
 alias rld='exec zsh'
+alias ghidra='/opt/homebrew/bin/ghidraRun'
+
 # blinking vertial cursor
 _fix_cursor() {
    echo -ne '\e[5 q'
@@ -147,6 +149,9 @@ figlet -w 80 -f slant -l sideseal. | lolcat
 # fzf setting
 # export FZF_DEFAULT_COMMAND='fd . $HOME'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+export USER="gychoi"
+export MAIL="gychoi@student.42seoul.kr"
 
 # Plugins
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
